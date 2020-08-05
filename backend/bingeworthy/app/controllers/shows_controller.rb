@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :update, :destroy]
 
+ 
+
   # GET /shows
   def index
     @shows = Show.all

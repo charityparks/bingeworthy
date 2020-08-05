@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
+  def search
+    user = User.where(show: params[:show]).first
+    render json: @shows
+  end
+
+
   # GET /users
   def index
     @users = User.all.reverse

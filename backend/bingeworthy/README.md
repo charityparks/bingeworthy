@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features
 
-Things you may want to cover:
+*Shows ability to make fetch requests to API via AJAX
 
-* Ruby version
+*Uses vanilla JavaScript to render HTML and CSS elements to the DOM
 
-* System dependencies
+*Allows user to add new shows
 
-* Configuration
+Tech Used
 
-* Database creation
+Ruby [2.6.1]
+Rails [6.0.3] - generated as an API only
+sqlite3 [1.4]
+Rack-cors - allow for cross-origin resource sharing
 
-* Database initialization
+To Install
 
-* How to run the test suite
+Backend
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Clone this repo to local machine git clone <this-repo>
+2. cd into project directory and into project-backend and run bundle install to install dependencies
+3. Run rails db:create to create a database
+4. Run rails db:migrate to create tables
+5. Run rails db:seed to generate seed data
+6. Run rails s to run server
 
-* Deployment instructions
+Frontend
 
-* ...
+1. Open another tab in terminal and cd into project-frontend directory.
+2. Inside project-frontend directory, type open index.html to open index.html in the browser to begin navigating through this application.

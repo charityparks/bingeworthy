@@ -18,7 +18,6 @@ class User {
                 <li>Comments: ${this.comments}</li>
             </ul>
            
-   
             <button class="delete-btn" data-id=${this.id} >Delete Entry
             </button>
         </div>
