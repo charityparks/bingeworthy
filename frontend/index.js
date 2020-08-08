@@ -21,7 +21,6 @@ function fetchUsers() {
             }
         })
 }
-
 //create - create a new user
 //add an event listener
 //once form is submitted => fetch POST to my backend
