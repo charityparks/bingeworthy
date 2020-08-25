@@ -36,7 +36,6 @@ function createForm() {
         Show: <input type="text" id="show">
         Comments: <input type="text" id="comments"><br><br>
         <input type="submit" class="send" value="It's BingeWorthy!"><br><br></b>
-
     </form>
     `
     usersForm.addEventListener("submit", userFormSubmission)
@@ -69,40 +68,3 @@ function userFormSubmission() {
 
         })
 }
-
-// const createSearchForm = () => {
-//     const body = document.body
-
-//     body.innerHTML +=
-//     `
-//         <div id="search-form">
-//             <input type="text" id="search"/>
-//             <button id="search-btn">Search</button>
-//         </div>
-//     `
-
-//     let searchBtn = document.getElementById('search-btn')
-//     searchBtn.addEventListener("click", processSearchQuery)
-
-//     }
-
-//     const processSearchQuery = () => {
-//         let query = document.getElementById('search').value
-
-//         //fetch request
-//         fetch(`http://localhost:3000/search/${query}`)
-//             .then(resp => resp.json())
-//             .then(user => {
-//                 document.body.innerHTML += 
-//                 `
-//                 <div id="search-results">
-//                     ${user.show}
-//                 </div>
-
-//                 `
-//             })
-//             .catch(error => {
-//                 const msg = {message: "Nothing Found."}
-//                 document.body.innerHTML += `${msg}`
-//             })
-//     }

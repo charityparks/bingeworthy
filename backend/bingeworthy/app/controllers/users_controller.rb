@@ -1,12 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
-  # def search
-  #   user = User.where(show: params[:show]).first
-  #   render json: @shows
-  # end
-
-
   # GET /users
   def index
     @users = User.all.reverse
@@ -21,7 +15,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params)   
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -55,4 +49,7 @@ class UsersController < ApplicationController
 
       params.require(:user).permit(:username, :show, :comments)
     end
+
+    #   params.require(:user).permit(:username, :comments, shows_attributes: [:id, :show])
+    # end
 end
