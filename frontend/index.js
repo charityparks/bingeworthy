@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
    
     fetchUsers();
     createForm();
-    // createSearchForm();
 })
 
 const BASE_URL = "http://localhost:3000"
@@ -52,7 +51,8 @@ function userFormSubmission() {
         show: show,
         comments: comments
     }
-
+   
+  
     fetch(`${BASE_URL}/users`, {
             method: "POST",
             headers: {
@@ -67,4 +67,5 @@ function userFormSubmission() {
             u.renderUser();
 
         })
+        
 }

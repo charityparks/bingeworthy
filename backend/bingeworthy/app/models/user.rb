@@ -4,6 +4,6 @@ class User < ApplicationRecord
 
     validates :username, presence: true
 
-    # accepts_nested_attributes_for :shows
+    accepts_nested_attributes_for :shows
 
 end

@@ -4,8 +4,11 @@ class User {
         this.username = username;
         this.show = show;
         this.comments = comments;
-    }
 
+        //need to render user instance method
+    }
+    
+  
     renderUser() {
         let usersDiv = document.getElementById("users-container")
 

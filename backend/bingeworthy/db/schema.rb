@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_204813) do
 
   create_table "shows", force: :cascade do |t|
     t.string "show"
+    t.string "comments"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -22,8 +23,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_204813) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "show"
-    t.string "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

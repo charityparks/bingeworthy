@@ -1,9 +1,7 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :update, :destroy]
 
- 
-
-  # GET /shows
+   # GET /shows
   def index
     @shows = Show.all
 
@@ -18,6 +16,8 @@ class ShowsController < ApplicationController
   # POST /shows
   def create
     @show = Show.new(show_params)
+
+    # @show = current_user.shows.build(show_params)
 
     if @show.save
       render json: @show, status: :created, location: @show
@@ -47,7 +47,11 @@ class ShowsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
+    # def show_params
+    #   params.require(:show).permit(:show, :comments, users_attributes: [:id, :username])
+    # end
+
     def show_params
-      params.require(:show).permit(:show)
+      params.require(:show).permit(:user_id, :show, :comments)
     end
 end

@@ -13,18 +13,21 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  # POST /users
+#  d = Dog.new
+# d.build_person(:attributes => "go", :here => "like normal")
+
   def create
-    @user = User.new(user_params)   
+    @user = User.find_or_create_by(user_params)   
 
     if @user.save
-      render json: @user, status: :created, location: @user
+      render json: @user,  status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT/users/1
+
+   # PATCH/PUT/users/1
   def update
     if @user.update(user_params)
       render json: @user
@@ -48,8 +51,7 @@ class UsersController < ApplicationController
     def user_params
 
       params.require(:user).permit(:username, :show, :comments)
+      
     end
+  end
 
-    #   params.require(:user).permit(:username, :comments, shows_attributes: [:id, :show])
-    # end
-end
