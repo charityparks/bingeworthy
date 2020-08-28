@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
+  
   # GET /users
   def index
     @users = User.all.reverse
-
     render json: @users
   end
 
@@ -13,21 +12,17 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-#  d = Dog.new
-# d.build_person(:attributes => "go", :here => "like normal")
-
   def create
-    @user = User.find_or_create_by(user_params)   
-
+    @user = User.find_or_create_by(username: params[:username])
+    @user = @user.shows.build(show: params[:show], comments: params[:comments])
     if @user.save
       render json: @user,  status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
-  end
-
-
-   # PATCH/PUT/users/1
+  end 
+ 
+     # PATCH/PUT/users/1
   def update
     if @user.update(user_params)
       render json: @user
@@ -49,9 +44,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-
       params.require(:user).permit(:username, :show, :comments)
-      
     end
   end
 

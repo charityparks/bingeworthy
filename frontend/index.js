@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-   
+
     fetchUsers();
     createForm();
 })
@@ -51,8 +51,7 @@ function userFormSubmission() {
         show: show,
         comments: comments
     }
-   
-  
+
     fetch(`${BASE_URL}/users`, {
             method: "POST",
             headers: {
@@ -63,9 +62,11 @@ function userFormSubmission() {
         })
         .then(resp => resp.json())
         .then(user => {
-            let u = new User(user.id, user.username, user.show, user.comments)
+            // let u = new User(user.id, user.username, show.shows, show.comments)
+            let u = new User(user.id, user.username, user.shows, user.comments)
+
             u.renderUser();
 
         })
-        
+
 }

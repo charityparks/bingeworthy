@@ -17,9 +17,7 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
 
-    # @show = current_user.shows.build(show_params)
-
-    if @show.save
+      if @show.save
       render json: @show, status: :created, location: @show
     else
       render json: @show.errors, status: :unprocessable_entity
@@ -47,9 +45,6 @@ class ShowsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    # def show_params
-    #   params.require(:show).permit(:show, :comments, users_attributes: [:id, :username])
-    # end
 
     def show_params
       params.require(:show).permit(:user_id, :show, :comments)

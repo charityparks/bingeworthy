@@ -8,8 +8,7 @@ class User {
         //need to render user instance method
     }
     
-  
-    renderUser() {
+      renderUser() {
         let usersDiv = document.getElementById("users-container")
 
         usersDiv.innerHTML +=
@@ -32,9 +31,7 @@ class User {
             })
         }
     }
-
     deleteUser() {
-        
         let userId = parseInt(event.target.dataset.id)
 
         fetch(`${BASE_URL}/users/${userId}`, {
