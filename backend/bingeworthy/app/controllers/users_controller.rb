@@ -1,27 +1,27 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  
+
   # GET /users
   def index
     @users = User.all.reverse
-    render json: @users
+    render json: @users, include: [:shows]
   end
 
   # GET /users/1
   def show
-    render json: @user
+    render json: @user, include: [:shows]
   end
 
   def create
-    @user = User.find_or_create_by(username: params[:username])
-    @user = @user.shows.build(show: params[:show], comments: params[:comments])
-    if @user.save
-      render json: @user,  status: :created, location: @user
+    user = User.find_or_create_by(username: params[:username])
+    user.shows.build(show: params[:show], comments: params[:comments])
+    if user.save
+      render json: user, include: [:shows],  status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: user.errors, status: :unprocessable_entity
     end
-  end 
- 
+  end
+
      # PATCH/PUT/users/1
   def update
     if @user.update(user_params)
@@ -47,4 +47,3 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :show, :comments)
     end
   end
-
