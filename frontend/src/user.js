@@ -14,10 +14,10 @@ class User {
         usersDiv.innerHTML +=
             `
         <div id="user-container">
-            <h3><b></b>Show: ${this.show}</b></h3>
+            <h3><b></b>Show: ${this.show.show}</b></h3>
             <ul>
                 <li>Username: ${this.username}</li>
-                <li>Comments: ${this.comments}</li>
+                <li>Comments: ${this.show.comments}</li>
             </ul>
            
             <button class="delete-btn" data-id=${this.id} >Delete Entry

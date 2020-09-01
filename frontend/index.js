@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     fetchUsers();
     createForm();
 })
@@ -11,11 +10,14 @@ function fetchUsers() {
     fetch(`${BASE_URL}/users`)
         .then(resp => resp.json())
         .then(users => {
+
             // this is where we do something with the data we fetched
             for (const user of users) {
 
-                let u = new User(user.id, user.username, user.show, user.comments)
+                let u = new User(user.id, user.username, user.shows[0])
+
                 u.renderUser();
+                console.log(user.shows)
             }
         })
 }
@@ -57,12 +59,9 @@ function userFormSubmission() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(user)
-            
-            // ({ username: user.username, show: show.show, comments: show.comments})
         })
         .then(resp => resp.json())
         .then(user => {
-            // console.log(user)
             let u = new User(user.id, user.username, user.show, user.comments)
             u.renderUser();
         

@@ -17,12 +17,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_by(username: params[:username])
+    @user = User.find_or_create_by(username: params[:username])
     @user.shows.build(show: params[:show], comments: params[:comments])
-    if @user.save
     
-      # render json: @user, :include => {:show => {:only => :comments}}
+    if @user.save
       render json: @user, include: [:shows], status: :created
+
     else
       render json: @user.errors, status: :unprocessable_entity
     end
