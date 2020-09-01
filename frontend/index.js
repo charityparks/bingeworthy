@@ -16,7 +16,6 @@ function fetchUsers() {
 
                 let u = new User(user.id, user.username, user.show, user.comments)
                 u.renderUser();
-
             }
         })
 }
@@ -41,16 +40,15 @@ function createForm() {
 }
 
 function userFormSubmission() {
-    let username = document.getElementById("username").value
-    let show = document.getElementById("show").value
-    let comments = document.getElementById("comments").value
-
-
+    let username = document.getElementById("username").value;
+    let show = document.getElementById("show").value;
+    let comments = document.getElementById("comments").value;
+    
     let user = {
         username: username,
         show: show,
         comments: comments
-    }
+    };
 
     fetch(`${BASE_URL}/users`, {
             method: "POST",
@@ -59,14 +57,16 @@ function userFormSubmission() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(user)
+            
+            // ({ username: user.username, show: show.show, comments: show.comments})
         })
         .then(resp => resp.json())
         .then(user => {
-            // let u = new User(user.id, user.username, show.shows, show.comments)
-            let u = new User(user.id, user.username, user.shows, user.comments)
-
+            // console.log(user)
+            let u = new User(user.id, user.username, user.show, user.comments)
             u.renderUser();
+        
 
-        })
+        });
 
 }

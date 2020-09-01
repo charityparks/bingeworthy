@@ -17,7 +17,7 @@ class ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
 
-      if @show.save
+    if @show.save
       render json: @show, status: :created, location: @show
     else
       render json: @show.errors, status: :unprocessable_entity
@@ -39,14 +39,13 @@ class ShowsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_show
       @show = Show.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-
     def show_params
       params.require(:show).permit(:user_id, :show, :comments)
     end
+  
 end
